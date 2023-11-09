@@ -1,0 +1,70 @@
+{
+  "cards": [
+    {
+			"id": "caf193a6-fcd9-40e7-b8f3-c47f541db4c7",
+			"number": 1,
+			"name": "Alakazam",
+			"image_url": "https://www.digitaltq.com/images/tcg/baseset/001.png",
+			"card_type_id": "c033dd57-0ab7-452f-bd84-340aa3d0e5af",
+			"card_rarity_id": "14765a58-6ebf-4be7-931c-3d1e891a17a8",
+			"serie_set_id": "7282de88-8310-4b70-be34-2057b4af4caa",
+			"created_at": "2023-04-02T04:15:45.890Z",
+			"updated_at": "2023-04-02T04:15:45.890Z"
+		},
+		{
+			"id": "5e140990-ce20-480a-a8c2-01c13d57576c",
+			"number": 2,
+			"name": "Blastoise",
+			"image_url": "https://www.digitaltq.com/images/tcg/baseset/002.png",
+			"card_type_id": "26fbcf8c-9411-42dc-87ca-075d9b41ec7d",
+			"card_rarity_id": "14765a58-6ebf-4be7-931c-3d1e891a17a8",
+			"serie_set_id": "7282de88-8310-4b70-be34-2057b4af4caa",
+			"created_at": "2023-04-02T04:15:45.897Z",
+			"updated_at": "2023-04-02T04:15:45.897Z"
+		},
+		{
+			"id": "e2cf020a-2cfa-4dbd-9cc2-9abd2a336761",
+			"number": 3,
+			"name": "Chansey",
+			"image_url": "https://www.digitaltq.com/images/tcg/baseset/003.png",
+			"card_type_id": "e17e633b-b75c-4ef3-8357-f384153df7e8",
+			"card_rarity_id": "14765a58-6ebf-4be7-931c-3d1e891a17a8",
+			"serie_set_id": "7282de88-8310-4b70-be34-2057b4af4caa",
+			"created_at": "2023-04-02T04:15:45.903Z",
+			"updated_at": "2023-04-02T04:15:45.903Z"
+		},
+		{
+			"id": "d8452a94-18df-48d8-bade-e9cc86370e16",
+			"number": 4,
+			"name": "Charizard",
+			"image_url": "https://www.digitaltq.com/images/tcg/baseset/004.png",
+			"card_type_id": "a724dae7-0402-4752-9538-640c1c9edf09",
+			"card_rarity_id": "14765a58-6ebf-4be7-931c-3d1e891a17a8",
+			"serie_set_id": "7282de88-8310-4b70-be34-2057b4af4caa",
+			"created_at": "2023-04-02T04:15:45.909Z",
+			"updated_at": "2023-04-02T04:15:45.909Z"
+		},
+		{
+			"id": "ba74452d-0430-4109-9511-b63db1f5ec38",
+			"number": 5,
+			"name": "Clefairy",
+			"image_url": "https://www.digitaltq.com/images/tcg/baseset/005.png",
+			"card_type_id": "e17e633b-b75c-4ef3-8357-f384153df7e8",
+			"card_rarity_id": "14765a58-6ebf-4be7-931c-3d1e891a17a8",
+			"serie_set_id": "7282de88-8310-4b70-be34-2057b4af4caa",
+			"created_at": "2023-04-02T04:15:45.914Z",
+			"updated_at": "2023-04-02T04:15:45.914Z"
+		},
+		{
+			"id": "0b1cae7f-5092-42ad-bb40-e1f32cd12f40",
+			"number": 6,
+			"name": "Gyarados",
+			"image_url": "https://www.digitaltq.com/images/tcg/baseset/006.png",
+			"card_type_id": "26fbcf8c-9411-42dc-87ca-075d9b41ec7d",
+			"card_rarity_id": "14765a58-6ebf-4be7-931c-3d1e891a17a8",
+			"serie_set_id": "7282de88-8310-4b70-be34-2057b4af4caa",
+			"created_at": "2023-04-02T04:15:45.936Z",
+			"updated_at": "2023-04-02T04:15:45.936Z"
+		}
+  ]
+}

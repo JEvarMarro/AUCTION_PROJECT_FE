@@ -1,0 +1,5 @@
+@font-face {
+  font-family: 'PokemonHollow';
+  src: local('PokemonHollow'),
+       url('./fonts/pokemon_hollow.woff2') format('woff2');
+}

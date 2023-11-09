@@ -1,0 +1,52 @@
+.card {
+  margin: 16px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.grey-card {
+  filter: grayscale(100%);
+  transition: filter 0.2s;
+}
+
+.grey-card:hover {
+  filter: none;
+}
+
+.card-image-container:has(.grey-card:hover) {
+  border: none;
+}
+
+.card-image-container {
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.card-image-container:has(.grey-card) {
+  border: 5px solid gold;
+}
+
+.listOfCardsHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.card-input_container {
+  margin-top: 8px;
+}
+
+.rare_holo h3, .rare_holo p {
+  color: goldenrod;
+}
+
+.rare h3, .rare p {
+  color: blueviolet;
+}
+
+.uncommon h3, .uncommon p {
+  color: greenyellow;
+}
+
+.common h3, .common p {
+  color: gray;
+}
