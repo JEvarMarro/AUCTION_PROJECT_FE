@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { loginService } from '../services/login'
 import { isAuthenticated } from '../auth/auth'
 import { useAuth } from '../hooks/useAuth'
+import '../styles/LoginForm.css'
 
 export function LoginForm () {
   const { login } = useAuth()
@@ -40,18 +41,20 @@ export function LoginForm () {
 
   return (
     <form onSubmit={handleLogin}>
-      <div>
+      <div className='login_form-email_container'>
         <input
           type='email'
+          className='login_form-email'
           value={email}
           name='Email'
           placeholder='Email'
           onChange={({ target }) => setEmail(target.value)}
         />
       </div>
-      <div>
+      <div className='login_form-password_container'>
         <input
           type='password'
+          className='login_form-password'
           value={password}
           name='Password'
           placeholder='Password'
@@ -62,12 +65,14 @@ export function LoginForm () {
         errorMessage &&
           <p>{errorMessage}</p>
       }
-      <button type='submit' className='loginButton'>
-        Login
-      </button>
-      <button type='button' onClick={handleClick} className='SignUpButton'>
-        Sign Up
-      </button>
+      <div className='login_form-buttons'>
+        <button type='submit' className='loginButton'>
+          Login
+        </button>
+        <button type='button' onClick={handleClick} className='SignUpButton'>
+          Sign Up
+        </button>
+      </div>
     </form>
   )
 }

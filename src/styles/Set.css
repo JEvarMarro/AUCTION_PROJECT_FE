@@ -1,0 +1,21 @@
+.sets {
+  width: 75%;
+  gap: 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  list-style: none;
+  overflow-y: auto;
+}
+
+.set {
+  text-align: center;
+}
+
+.set h3, .set p {
+  margin: 0;
+}
+
+.set img, .set img {
+  border-radius: 8px;
+  display: block;
+}

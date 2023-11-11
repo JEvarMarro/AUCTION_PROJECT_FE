@@ -1,0 +1,19 @@
+.login_form-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loginButton, .SignUpButton {
+  width: 100%;
+}
+
+.login_form-email_container, .login_form-password_container {
+  width: 100%;
+}
+
+.login_form-email, .login_form-password {
+  width: 100%;
+}
