@@ -1,16 +1,17 @@
 import axios from 'axios'
 const API_URL = 'http://127.0.0.1:3000/'
 
-export const searchCollection = async (authToken) => {
+export const searchCollection = async (userId) => {
   try {
     const config = {
-      headers: {
-        Authorization: `Bearer ${authToken}`
+      params: {
+        user: {
+          user_id: userId
+        }
       }
     }
-    const response = await fetch(`${API_URL}collection`, config)
-    const json = await response.json()
-    const collection = json.collection
+    const { data } = await axios.get(`${API_URL}collection`, config)
+    const collection = data.collection
 
     return collection?.map(collectionItem => ({
       id: collectionItem?.card.id,

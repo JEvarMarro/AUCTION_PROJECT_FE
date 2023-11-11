@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+
 import {
   searchCollection,
   addToCollection,
@@ -7,17 +8,17 @@ import {
   addSet,
   removeSet
 } from '../services/collection'
+import { userIdFromToken } from '../auth/auth'
 
 export function useCollection () {
   const [collection, setCollection] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const getCollection = async (authToken) => {
+  const getCollection = async (userId) => {
     try {
-      // setLoading(true)
       setError(null)
-      const newCollection = await searchCollection(authToken)
+      const newCollection = await searchCollection(userId)
       setCollection(newCollection)
     } catch (e) {
       setError(e.message)
@@ -57,7 +58,8 @@ export function useCollection () {
       setLoading(true)
       setError(null)
       await removeSet(authToken, setId)
-      getCollection(authToken)
+      const userId = userIdFromToken(authToken)
+      getCollection(userId)
     } catch (e) {
       setError(e.message)
     } finally {
@@ -70,7 +72,8 @@ export function useCollection () {
       setLoading(true)
       setError(null)
       await addSet(authToken, setId)
-      getCollection(authToken)
+      const userId = userIdFromToken(authToken)
+      getCollection(userId)
     } catch (e) {
       setError(e.message)
     } finally {

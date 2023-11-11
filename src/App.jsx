@@ -29,6 +29,9 @@ function App () {
                 <Route path='/signup' element={<SignUpForm />} />
               </Routes>
             </main>
+            <footer>
+              <p>Vicio TCG</p>
+            </footer>
           </div>
         </Router>
       </CardCollectionProvider>

@@ -1,6 +1,7 @@
-import { createContext, useEffect } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useCollection } from '../hooks/useCollection'
 import { useAuth } from '../hooks/useAuth'
+import { userIdFromToken } from '../auth/auth'
 
 export const CardCollectionContext = createContext()
 
@@ -16,14 +17,16 @@ export function CardCollectionProvider ({ children }) {
     loading
   } = useCollection()
   const { authToken } = useAuth()
+  const [userId, setUserId] = useState()
 
   useEffect(() => {
-    if (authToken) {
-      getCollection(authToken)
+    setUserId(userIdFromToken(authToken))
+    if (authToken && userId) {
+      getCollection(userId)
     } else {
       setCollection([])
     }
-  }, [authToken])
+  }, [authToken, userId])
 
   const toggleCardIntoCollection = async ({ cardId }) => {
     const cardInCollectionIndex = collection.findIndex(item => item.id === cardId)
@@ -32,7 +35,7 @@ export function CardCollectionProvider ({ children }) {
     } else {
       await addCardToCollection(authToken, cardId)
     }
-    await getCollection(authToken)
+    await getCollection(userId)
   }
 
   const selectAll = async (setId) => {
