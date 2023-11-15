@@ -9,6 +9,7 @@ import { ProtectedRoutes } from './auth/ProtectedRoutes'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { CardCollectionProvider } from './context/cardCollection'
 import { AuthProvider } from './context/auth'
+import { Collection } from './components/Collection'
 
 function App () {
   return (
@@ -25,8 +26,11 @@ function App () {
                   <Route path='series/:serieId/sets' element={<Sets />} />
                   <Route path='series/:serieId/sets/:setId/cards' element={<Cards />} />
                 </Route>
+                <Route path='collection/:userId' element={<Collection />} />
                 <Route path='/login' element={<LoginForm />} />
                 <Route path='/signup' element={<SignUpForm />} />
+                <Route path='/collection/:userId/series/:serieId/sets' element={<Sets />} />
+                <Route path='/collection/:userId/series/:serieId/sets/:setId/cards' element={<Cards />} />
               </Routes>
             </main>
             <footer>

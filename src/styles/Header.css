@@ -18,3 +18,7 @@ header button {
 .header-main_title {
   cursor: pointer;
 }
+
+.header-right_buttons_container {
+  display: flex;
+}

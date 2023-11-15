@@ -1,14 +1,15 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect } from 'react'
 import { useCollection } from '../hooks/useCollection'
 import { useAuth } from '../hooks/useAuth'
-import { userIdFromToken } from '../auth/auth'
 
 export const CardCollectionContext = createContext()
 
 export function CardCollectionProvider ({ children }) {
   const {
     collection,
-    setCollection,
+    setsCollection,
+    cardsCollection,
+    guessCardsCollection,
     getCollection,
     addCardToCollection,
     removeCardFromCollection,
@@ -16,26 +17,23 @@ export function CardCollectionProvider ({ children }) {
     removeSetFromCollection,
     loading
   } = useCollection()
+
   const { authToken } = useAuth()
-  const [userId, setUserId] = useState()
 
   useEffect(() => {
-    setUserId(userIdFromToken(authToken))
-    if (authToken && userId) {
-      getCollection(userId)
-    } else {
-      setCollection([])
+    if (authToken) {
+      getCollection({ authToken })
     }
-  }, [authToken, userId])
+  }, [authToken])
 
   const toggleCardIntoCollection = async ({ cardId }) => {
-    const cardInCollectionIndex = collection.findIndex(item => item.id === cardId)
+    const cardInCollectionIndex = cardsCollection.findIndex(item => item.id === cardId)
     if (cardInCollectionIndex >= 0) {
       await removeCardFromCollection(authToken, cardId)
     } else {
       await addCardToCollection(authToken, cardId)
     }
-    await getCollection(userId)
+    await getCollection({ authToken })
   }
 
   const selectAll = async (setId) => {
@@ -49,6 +47,10 @@ export function CardCollectionProvider ({ children }) {
   return (
     <CardCollectionContext.Provider value={{
       collection,
+      getCollection,
+      setsCollection,
+      cardsCollection,
+      guessCardsCollection,
       toggleCardIntoCollection,
       clearCardCollection,
       selectAll,

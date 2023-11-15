@@ -1,21 +1,41 @@
+.listOfSetsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 32px;
+  margin-right: 32px;
+  height:inherit
+}
+
 .sets {
-  width: 75%;
   gap: 64px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  max-width:100%;
+  height: auto;
   list-style: none;
   overflow-y: auto;
 }
 
 .set {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid gold;
+  border-radius: 14px;
+  cursor: pointer;
 }
 
+.set:hover {
+  background: gold
+}
 .set h3, .set p {
   margin: 0;
 }
 
-.set img, .set img {
+.set img {
   border-radius: 8px;
   display: block;
+  max-width: 100%;
 }

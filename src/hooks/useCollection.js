@@ -12,19 +12,52 @@ import { userIdFromToken } from '../auth/auth'
 
 export function useCollection () {
   const [collection, setCollection] = useState([])
+  const [setsCollection, setSetsCollection] = useState([])
+  const [cardsCollection, setCardsCollection] = useState([])
+  const [guessCollection, setGuessCollection] = useState([])
+  const [guessSetsCollection, setGuessSetsCollection] = useState([])
+  const [guessCardsCollection, setGuessCardsCollection] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const getCollection = async (userId) => {
+  const getCollection = async ({ authToken, userId }) => {
     try {
       setError(null)
-      const newCollection = await searchCollection(userId)
-      setCollection(newCollection)
+      if (authToken) {
+        const loggedUserId = userIdFromToken(authToken)
+        const newCollection = await searchCollection({ userId: loggedUserId })
+        const newSetsCollection = getSetsFromCollection(newCollection)
+        const newCardsCollection = getCardsFromCollection(newSetsCollection)
+        setCollection(newCollection)
+        setSetsCollection(newSetsCollection)
+        setCardsCollection(newCardsCollection)
+      } else {
+        setCollection([])
+        setSetsCollection([])
+        setCardsCollection([])
+      }
+      if (userId) {
+        const newCollection = await searchCollection({ userId })
+        const newSetsCollection = getSetsFromCollection(newCollection)
+        const newCardsCollection = getCardsFromCollection(newSetsCollection)
+        setGuessCollection(newCollection)
+        setGuessSetsCollection(newCollection)
+        setGuessCardsCollection(newCardsCollection)
+      }
     } catch (e) {
       setError(e.message)
+      return []
     } finally {
       // setLoading(false)
     }
+  }
+
+  const getSetsFromCollection = (newCollection) => {
+    return newCollection.map(serie => serie.sets).flat()
+  }
+
+  const getCardsFromCollection = (newSets) => {
+    return newSets?.map(set => set.cards)?.flat()
   }
 
   const addCardToCollection = async (authToken, userId) => {
@@ -44,8 +77,8 @@ export function useCollection () {
       // setLoading(true)
       setError(null)
       await removeFromCollection(authToken, cardId)
-      const updatedCollection = collection.filter(item => item.id !== cardId)
-      setCollection(updatedCollection)
+      const updatedCardsCollection = cardsCollection.filter(item => item.id !== cardId)
+      setCardsCollection(updatedCardsCollection)
     } catch (e) {
       setError(e.message)
     } finally {
@@ -59,7 +92,7 @@ export function useCollection () {
       setError(null)
       await removeSet(authToken, setId)
       const userId = userIdFromToken(authToken)
-      getCollection(userId)
+      await getCollection({ userId })
     } catch (e) {
       setError(e.message)
     } finally {
@@ -73,7 +106,7 @@ export function useCollection () {
       setError(null)
       await addSet(authToken, setId)
       const userId = userIdFromToken(authToken)
-      getCollection(userId)
+      await getCollection({ userId })
     } catch (e) {
       setError(e.message)
     } finally {
@@ -84,6 +117,16 @@ export function useCollection () {
   return {
     collection,
     getCollection,
+    setsCollection,
+    setSetsCollection,
+    getSetsFromCollection,
+    cardsCollection,
+    setCardsCollection,
+    guessCollection,
+    guessSetsCollection,
+    guessCardsCollection,
+    setGuessCardsCollection,
+    getCardsFromCollection,
     addCardToCollection,
     removeCardFromCollection,
     setCollection,
